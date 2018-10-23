@@ -1,0 +1,24 @@
+# Example configuration.yaml file for Home Assistant
+# Using Hass.io add-on for MQTT (Mosquitto)
+
+
+mqtt:
+  broker: core-mosquitto
+
+
+cover: 
+  - platform: mqtt
+    name: "Rollerblinds" 
+    command_topic: "/rollerblind/0/set" 
+    state_topic: "/rollerblind/0/status"
+    qos: 0
+    retain: true
+    payload_open: "0"
+    payload_close: "100"
+    payload_stop: "200"
+    state_open: "0"
+    state_closed: "100"
+    payload_available: "online"
+    payload_not_available: "offline"
+    optimistic: false
+    value_template: '{{ value.x }}'
